@@ -5,6 +5,29 @@ import Card from './components/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
 
+const arr = [
+  {
+    name: 'iPhone 15 Pro Max',
+    src: '/img/goods/2.jfif',
+    price: 12999
+  },
+  {
+    name: 'iPhone 14 Pro Max',
+    src: '/img/goods/1.jfif',
+    price: 12999
+  },
+  {
+    name: 'iPhone 12 Pro Max',
+    src: '/img/goods/4.jfif',
+    price: 12999
+  },
+  {
+    name: 'iPhone 13 Pro Max',
+    src: '/img/goods/3.jfif',
+    price: 12999
+  },
+]
+
 function App() {
   return (
     <div className="wrapper">
@@ -18,8 +41,9 @@ function App() {
           </div>
         </div>
         <div className="content__inner">
-
-          <Card />
+          {
+            arr.map(obj => <Card {...obj} />)
+          }
         </div>
       </div>
     </div>
