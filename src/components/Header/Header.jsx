@@ -1,6 +1,6 @@
 import './header.scss'
 
-const Header = () => {
+const Header = ({ onClickCart }) => {
     return (
         <header className='header'>
             <div className="header__inner">
@@ -12,7 +12,7 @@ const Header = () => {
                     </div>
                 </div>
                 <ul className="header__list">
-                    <li className='header__list-cart'>
+                    <li className='header__list-cart' onClick={onClickCart}>
                         <img src="/img/icons/cart.svg" alt="icon" />
                         <span>1205 руб.</span>
                     </li>

@@ -4,35 +4,27 @@ import './styles/reset.scss';
 import Card from './components/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
-
-const arr = [
-  {
-    name: 'iPhone 15 Pro Max',
-    src: '/img/goods/2.jfif',
-    price: 12999
-  },
-  {
-    name: 'iPhone 14 Pro Max',
-    src: '/img/goods/1.jfif',
-    price: 12999
-  },
-  {
-    name: 'iPhone 12 Pro Max',
-    src: '/img/goods/4.jfif',
-    price: 12999
-  },
-  {
-    name: 'iPhone 13 Pro Max',
-    src: '/img/goods/3.jfif',
-    price: 12999
-  },
-]
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [items, setItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [cartOpened, setCartOpened] = useState(false);
+
+  useEffect(() => {
+    fetch('https://65477eb0902874dff3ac6148.mockapi.io/items')
+      .then(res => res.json())
+      .then(json => setItems(json))
+  }, []);
+
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj])
+  }
+
   return (
     <div className="wrapper">
-      <Drawer />
-      <Header />
+      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} />}
+      <Header onClickCart={() => setCartOpened(true)} />
       <div className="content">
         <div className="content__top">
           <h3 className="content__title title">Все телефоны</h3>
@@ -42,7 +34,13 @@ function App() {
         </div>
         <div className="content__inner">
           {
-            arr.map(obj => <Card {...obj} />)
+            items.map(item => (
+              <Card
+                onPlus={(obj) => onAddToCart(obj)}
+                onFavorite={() => console.log('Favorite')}
+                {...item}
+              />
+            ))
           }
         </div>
       </div>
