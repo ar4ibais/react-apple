@@ -87,4 +87,53 @@
 	&__item_close {
 		cursor: pointer;
 	}
+	&__empty {
+		text-align: center;
+		width: 245px;
+		margin: 0 auto;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		img {
+			display: inline-block;
+		}
+		&_title {
+			margin: 20px 0 10px;
+			font-size: 22px;
+			font-weight: 600;
+			line-height: 27px;
+		}
+		&_text {
+			opacity: 0.4;
+			margin-bottom: 40px;
+		}
+		&_button {
+			border: none;
+			background-color: #9dd558;
+			padding: 18px 30px;
+			position: relative;
+			border-radius: 18px;
+			color: #fff;
+			cursor: pointer;
+			width: 100%;
+			transition: all 0.3s;
+			&:hover {
+				background-color: lighten(#9dd558, 10%);
+				&::before {
+					transform: translateX(-10px);
+				}
+			}
+			&::before {
+				position: absolute;
+				transition: all 0.3s;
+				content: "";
+				width: 16px;
+				height: 14px;
+				background-image: url("../../../public/img/icons/arrow-left.svg");
+				top: 19px;
+				left: 30px;
+			}
+		}
+	}
 }

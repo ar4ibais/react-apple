@@ -27,7 +27,7 @@
 	&__list {
 		display: flex;
 		column-gap: 30px;
-		li {
+		&-item {
 			display: flex;
 			align-items: center;
 			column-gap: 10px;
