@@ -2,12 +2,29 @@ import Card from '../components/Card';
 
 const Home = ({
     items,
+    cartItems,
     searchValue,
     setSearchValue,
     onChangeSearchInput,
     onAddToFavorite,
-    onAddToCart
+    onAddToCart,
+    isLoading
 }) => {
+
+    const renderItems = () => {
+        const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
+        return (isLoading ? [...Array(4)] : filteredItems)
+            .map((item, index) => (
+                <Card
+                    key={index}
+                    onPlus={(obj) => onAddToCart(obj)}
+                    onFavorite={(obj) => onAddToFavorite(obj)}
+                    loading={isLoading}
+                    {...item}
+                />
+            ))
+    }
+
     return (
         <div className="content">
             <div className="content__top">
@@ -25,16 +42,7 @@ const Home = ({
             </div>
             <div className="content__inner">
                 {
-                    items
-                        .filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
-                        .map((item, index) => (
-                            <Card
-                                key={index}
-                                onPlus={(obj) => onAddToCart(obj)}
-                                onFavorite={(obj) => onAddToFavorite(obj)}
-                                {...item}
-                            />
-                        ))
+                    renderItems()
                 }
             </div>
         </div>
