@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/react-apple/static/css/main.5dda2ece.css",
-    "main.js": "/react-apple/static/js/main.405eef54.js",
+    "main.js": "/react-apple/static/js/main.e8197bcd.js",
     "static/media/search.svg": "/react-apple/static/media/search.c8e6dad63f292554ccc6.svg",
     "index.html": "/react-apple/index.html",
     "static/media/arrow-left.svg": "/react-apple/static/media/arrow-left.7f8ff054ca816f0a7509.svg",
     "static/media/arrow-right.svg": "/react-apple/static/media/arrow-right.630fe26aa02de1ef63d1.svg",
     "main.5dda2ece.css.map": "/react-apple/static/css/main.5dda2ece.css.map",
-    "main.405eef54.js.map": "/react-apple/static/js/main.405eef54.js.map"
+    "main.e8197bcd.js.map": "/react-apple/static/js/main.e8197bcd.js.map"
   },
   "entrypoints": [
     "static/css/main.5dda2ece.css",
-    "static/js/main.405eef54.js"
+    "static/js/main.e8197bcd.js"
   ]
 }
