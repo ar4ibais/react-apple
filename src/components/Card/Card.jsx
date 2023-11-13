@@ -3,7 +3,8 @@ import ContentLoader from "react-content-loader"
 import './card.scss';
 import AppContext from '../../context';
 
-const Card = ({ id,
+const Card = ({
+    id,
     name,
     src,
     price,
@@ -15,13 +16,14 @@ const Card = ({ id,
 }) => {
     const { isItemAdded } = useContext(AppContext);
     const [isFavorite, setIsFavorite] = useState(favorited);
+    const obj = { id, parentId: id, name, src, price }
 
     const onClickPlus = () => {
-        onPlus({ id, name, src, price })
+        onPlus(obj)
     }
 
     const onClickFavorite = () => {
-        onFavorite({ id, name, src, price })
+        onFavorite(obj)
         setIsFavorite(!isFavorite)
     }
     return (

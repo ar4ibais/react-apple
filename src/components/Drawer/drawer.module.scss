@@ -6,6 +6,18 @@
 	height: 100%;
 	background: rgba(0, 0, 0, 0.5);
 	z-index: 1;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+	overflow: hidden;
+}
+
+.overlayVisible {
+	visibility: visible;
+	opacity: 1;
+	.drawer {
+		transform: translateX(0);
+	}
 }
 
 .drawer {
@@ -19,6 +31,8 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	transform: translateX(100%);
+	transition: all 0.3s ease-in-out;
 	&__top {
 		display: flex;
 		justify-content: space-between;

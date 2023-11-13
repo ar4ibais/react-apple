@@ -8,7 +8,7 @@ const delay = (ms) => new Promise((resolve) => {
     setTimeout(resolve, ms)
 })
 
-const Drawer = ({ onClose, items = [], onRemove }) => {
+const Drawer = ({ onClose, items = [], onRemove, opened }) => {
     const [isOrderComplete, setIsOrderComplete] = useState(false)
     const [orderId, setOrderId] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -27,10 +27,6 @@ const Drawer = ({ onClose, items = [], onRemove }) => {
             setIsOrderComplete(true)
             setCartItems([])
 
-            // cartItems.forEach(item => {
-            //     axios.delete(`https://65477eb0902874dff3ac6148.mockapi.io/cart/${item.id}`)
-
-            // })
             for (let i = 0; i < cartItems.length; i++) {
                 const item = cartItems[i];
                 await axios.delete(`https://65477eb0902874dff3ac6148.mockapi.io/cart/${item.id}`)
@@ -42,8 +38,8 @@ const Drawer = ({ onClose, items = [], onRemove }) => {
         setIsLoading(false)
     }
     return (
-        <div className={styles.overlay}>
-            <div className={styles.drawer}>
+        <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
+            <div className={`${styles.drawer}`}>
                 <div className={styles.drawer__top}>
                     <h3>Корзина</h3>
                     <img onClick={onClose} className={styles.drawer__close} src="/img/icons/btn-close.svg" alt="icon" />
@@ -53,8 +49,8 @@ const Drawer = ({ onClose, items = [], onRemove }) => {
                         <>
                             <div className={styles.cart}>
                                 {
-                                    items.map(obj => (
-                                        <div className={styles.cart__item}>
+                                    items.map((obj, index) => (
+                                        <div key={index} className={styles.cart__item}>
                                             <img width={50} height={70} src={obj.src} alt="image" />
                                             <div className="">
                                                 <p>{obj.name}</p>
@@ -75,7 +71,7 @@ const Drawer = ({ onClose, items = [], onRemove }) => {
                                     <li className={styles.drawer__total_item}>
                                         <p>Налог 5%: </p>
                                         <div></div>
-                                        <span>{totalPrice * 0.05} руб.</span>
+                                        <span>{(totalPrice * 0.05).toFixed(2)} руб.</span>
                                     </li>
                                 </ul>
                                 <button disabled={isLoading} onClick={onClickOrder} className={styles.drawer__total_btn}>

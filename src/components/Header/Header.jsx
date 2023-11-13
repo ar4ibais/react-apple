@@ -37,10 +37,12 @@ const Header = ({ onClickCart }) => {
                         </Link>
                     </li>
                     <li className='header__list-orders'>
-                        <div className="header__list-item">
-                            <img src="/img/icons/orders.svg" alt="icon" />
-                            <span>Профиль</span>
-                        </div>
+                        <Link to="/orders">
+                            <div className="header__list-item">
+                                <img src="/img/icons/orders.svg" alt="icon" />
+                                <span>Профиль</span>
+                            </div>
+                        </Link>
                     </li>
                 </ul>
             </div>
