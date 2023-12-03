@@ -43,7 +43,7 @@ const Card = ({
                     <rect x="124" y="230" rx="10" ry="10" width="32" height="32" />
                 </ContentLoader> : <>
                     <div className="card__favorite">
-                        <img src={isFavorite ? "/img/icons/heart-liked.svg" : "/img/icons/heart-unliked.svg"} alt="icon" onClick={onClickFavorite} />
+                        <img src={isFavorite ? "react-apple/img/icons/heart-liked.svg" : "react-apple/img/icons/heart-unliked.svg"} alt="icon" onClick={onClickFavorite} />
                     </div>
                     <img className='card__image' width={112} height={133} src={src} alt="image" />
                     <p className="card__text">
@@ -57,7 +57,7 @@ const Card = ({
                         <img
                             onClick={onClickPlus}
                             className='card__addCart'
-                            src={isItemAdded(id) ? "/img/icons/btn-checked.svg" : "/img/icons/plus.svg"}
+                            src={isItemAdded(id) ? "react-apple/img/icons/btn-checked.svg" : "react-apple/img/icons/plus.svg"}
                             alt="icon"
                         />
                     </div>
